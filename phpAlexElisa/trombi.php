@@ -1,3 +1,38 @@
+    <!-- Création tableau et fonction -->
+    <?php
+    $trombi = [
+        ['photo' => './imgTrombi/emmafrost', 'prénom' => 'Elisa', 'age' => 26, 'nom' => 'Freezy Frosty'],
+        ['photo' => './imgTrombi/drStrange', 'prénom' => 'Alexis',  'age' => 25,'nom' => 'Dr Ternaire',],
+        ['photo' => './imgTrombi/hawkeye', 'prénom' => 'Rémi', 'age' => 18, 'nom' => 'Hackeye'],
+        ['photo' => './imgTrombi/flash', 'prénom' => 'Alexandre', 'age' => 29, 'nom' => 'Slash'],
+        ['photo' => './imgTrombi/heimdall', 'prénom' => 'Florian', 'age' => 23, 'nom' => 'Heimdall'],
+        ['photo' => './imgTrombi/Thor', 'prénom' => 'Romain', 'age' => 29, 'nom' => 'Tor'],
+        ['photo' => './imgTrombi/batman', 'prénom' => 'Hugo', 'age' => 30, 'nom' => 'Byteman'],
+        ['photo' => './imgTrombi/Deadpool', 'prénom' => 'Khang', 'age' => 28, 'nom' => 'Deadscreen'],
+        ['photo' => './imgTrombi/Groot', 'prénom' => 'Jérôme', 'age' => 30, 'nom' => 'Root'],
+        ['photo' => './imgTrombi/Storm', 'prénom' => 'Patricia', 'age' => 40, 'nom' => 'StormBits'],
+        ['photo' => './imgTrombi/catwoman', 'prénom' => 'Corinne', 'age' => 32, 'nom' => 'Catcoco'],
+        ['photo' => '', 'prénom' => 'test', 'nom' => 'test'],
+    ];
+
+
+
+
+    function afficherStudent($student)
+    {
+        echo "<div class='mt-2 col-sm-3'>\n
+                <img src='{$student['photo']}' style='width:68px;height:auto'>
+                <p>{$student['prénom']}</p>
+                <p>{$student['age']} ans</p>
+                <p>{$student['nom']}
+            </div>";
+    }
+
+
+
+    ?>
+    <!-- fin Création tableau et fonction -->
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,79 +40,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trombi Dev'Enger</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <form action="trombi.php" method="get">
-        <div>
-            <label for="table">Recherche ton super héro</label>
-            <input type="text" name="who">
+
+
+
+    <!-- début du site -->
+    <header class="bg-primary text-center py-2 container-fluid">
+
+        <h1>Trombi Dev'Engers</h1>
+
+    </header>
+
+    <div class="container">
+
+        <form class="bg-secondary text-center col-sm-4 offset-md-8 mt-2" action="trombi.php" method="get">
+            <div>
+                <label for="table">Qui cherchez-vous ?</label>
+                <br>
+                <input type="text" name="who"> <input type="submit">
+            </div>
+
+        </form>
+
+
+        <div class="container-fluid bg-warning d-flex flex-wrap justify-content-around">
+
+            <!-- programme de recherche -->
+            <?php
+
+            $z = 0;
+
+            foreach ($trombi as $student) {
+                if ($_GET['who'] == '')
+                    afficherStudent($student);
+                elseif (stripos($student['prénom'], $_GET['who']) !== false) {
+                    afficherStudent($student);
+                } elseif (stripos($student['nom'], $_GET['who']) !== false) {
+                    afficherStudent($student);
+                } else $z++;
+            }
+
+            if ($z == count($trombi)) echo '<p>pas de réponse</p>';
+
+            ?>
+            <!-- fin programme de recherche -->
+
+
         </div>
 
-        <div>
-            <input type="submit">
-        </div>
-    </form>
+        <!-- appelle script bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 
-    <?php
-    $trombi = [
-        ['photo' => './imgTrombi/emmafrost', 'prénom' => 'Elisa', 'nom' => 'Freezy Frosty', 'age' => 26],
-        ['photo' => './imgTrombi/drStrange', 'prénom' => 'Alexis', 'nom' => 'Dr Ternaire', 'age' => 25],
-        ['photo' => './imgTrombi/hawkeye', 'prénom' => 'Rémi', 'nom' => 'Hackeye', 'age' => 18],
-        ['photo' => './imgTrombi/flash', 'prénom' => 'Alexandre', 'nom' => 'Slash', 'age' => 29],
-        ['photo' => './imgTrombi/heimdall', 'prénom' => 'Florian', 'nom' => 'Heimdall', 'age' => 23],
-        ['photo' => './imgTrombi/Thor', 'prénom' => 'Romain', 'nom' => 'Tor', 'age' => 29],
-        ['photo' => './imgTrombi/batman', 'prénom' => 'Hugo', 'nom' => 'Byteman', 'age' => 30],
-        ['photo' => './imgTrombi/Deadpool', 'prénom' => 'Khang', 'nom' => 'Deadscreen', 'age' => 28],
-        ['photo' => './imgTrombi/Groot', 'prénom' => 'Jérôme', 'nom' => 'Root', 'age' => 30],
-        ['photo' => './imgTrombi/Storm', 'prénom' => 'Patricia', 'nom' => 'StormBits', 'age' => 40],
-        ['photo' => './imgTrombi/catwoman', 'prénom' => 'Corinne', 'nom' => 'Catcoco', 'age' => 32],
-        ['photo' => '', 'prénom' => 'test', 'nom' => 'test'],
-    ];
-
-
-    function afficherStudent($student)
-    {
-        foreach ($student as $key => $value)
-            if ($key == 'photo')
-                echo "<img src='$value' style='width:68px;height:auto'>";
-            elseif ($key == 'age')
-                echo $value . ' ans';
-            else echo $value . ' ';
-        echo '<br>';
-    }
-
-
-//programe de recherche
-    $z = 0;
-
-    foreach ($trombi as $student) {
-        if ($_GET['who'] == '')
-            afficherStudent($student);
-        elseif (stripos($student['prénom'], $_GET['who']) !== false) {
-            afficherStudent($student);
-        } elseif (stripos($student['nom'], $_GET['who']) !== false) {
-            afficherStudent($student);
-        } else $z++;
-    }
-
-    if ($z == count($trombi)) echo '<p>pas de réponse</p>';
-
-?>
-
-
-<!-- appelle script bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-
+    </div>
 </body>
 
 
