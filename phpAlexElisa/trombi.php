@@ -9,12 +9,12 @@
 
 <body>
 
-<form action="trombi.php" method="get">
+    <form action="trombi.php" method="get">
         <div>
             <label for="table">Recherche ton super héro</label>
             <input type="text" name="who">
         </div>
-        
+
         <div>
             <input type="submit">
         </div>
@@ -37,17 +37,89 @@
         ['photo' => '', 'prénom' => 'test', 'nom' => 'test'],
     ];
 
-    echo stripos($trombi,$_GET['who']);
 
-    foreach ($trombi as $key) {
-        foreach ($key as $key => $value)
+    function afficherStudent($student)
+    {
+        foreach ($student as $key => $value)
             if ($key == 'photo')
                 echo "<img src='$value' style='width:68px;height:auto'>";
             elseif ($key == 'age')
-                echo $value . ' ans';    
+                echo $value . ' ans';
             else echo $value . ' ';
         echo '<br>';
-    };
+    }
+
+
+    $z = 0;
+
+    foreach ($trombi as $student) {
+        if ($_GET['who'] == '')
+            afficherStudent($student);
+        elseif (stripos($student['prénom'], $_GET['who']) !== false) {
+            afficherStudent($student);
+        } elseif (stripos($student['nom'], $_GET['who']) !== false) {
+            afficherStudent($student);
+        } else $z++;
+    }
+
+    if ($z == count($trombi)) echo '<p>pas de réponse</p>';
+
+
+
+
+
+
+
+    //     foreach ($student as $key => $value)
+    //         if (stripos($value, $_GET['who']) === true) //stripos ($pTextToSearchIn, $pTextToFind)
+    //         {
+    //             foreach ($student as $key => $value)
+    //                 if ($key == 'photo')
+    //                     echo "<img src='$value' style='width:68px;height:auto'>";
+    //                 elseif ($key == 'age')
+    //                     echo $value . ' ans';
+    //                 else echo $value . ' ';
+    //             echo '<br>';
+    //         }
+    // }
+
+
+
+
+
+
+
+
+    // foreach ($trombi as $student) {
+    //     foreach ($student as $key => $value)
+    //         if (stripos($value, $_GET['who']) === true) //stripos ($pTextToSearchIn, $pTextToFind)
+    //         {
+    //             foreach ($student as $key => $value)
+    //                 if ($key == 'photo')
+    //                     echo "<img src='$value' style='width:68px;height:auto'>";
+    //                 elseif ($key == 'age')
+    //                     echo $value . ' ans';
+    //                 else echo $value . ' ';
+    //             echo '<br>';
+    //         }
+    // }
+
+
+
+
+
+
+    // function searchStudent ($pPetitTableau)
+    // {        
+    //         foreach ($pPetitTableau => $value)
+    //             if ($key == 'photo')
+    //                 echo "<img src='$value' style='width:68px;height:auto'>";
+    //             elseif ($key == 'age')
+    //                 echo $value . ' ans';    
+    //             else echo $value . ' ';
+    //         echo '<br>';
+
+    // }
 
 
     // function showStudent ($pGrosTableau)
