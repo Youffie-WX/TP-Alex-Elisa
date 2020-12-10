@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TP Bonjour</title>
+    <title>Trombi Dev'Enger</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 
 <body>
@@ -50,6 +52,7 @@
     }
 
 
+//programe de recherche
     $z = 0;
 
     foreach ($trombi as $student) {
@@ -64,79 +67,18 @@
 
     if ($z == count($trombi)) echo '<p>pas de réponse</p>';
 
+?>
 
 
-
-
-
-
-    //     foreach ($student as $key => $value)
-    //         if (stripos($value, $_GET['who']) === true) //stripos ($pTextToSearchIn, $pTextToFind)
-    //         {
-    //             foreach ($student as $key => $value)
-    //                 if ($key == 'photo')
-    //                     echo "<img src='$value' style='width:68px;height:auto'>";
-    //                 elseif ($key == 'age')
-    //                     echo $value . ' ans';
-    //                 else echo $value . ' ';
-    //             echo '<br>';
-    //         }
-    // }
-
-
-
-
-
-
-
-
-    // foreach ($trombi as $student) {
-    //     foreach ($student as $key => $value)
-    //         if (stripos($value, $_GET['who']) === true) //stripos ($pTextToSearchIn, $pTextToFind)
-    //         {
-    //             foreach ($student as $key => $value)
-    //                 if ($key == 'photo')
-    //                     echo "<img src='$value' style='width:68px;height:auto'>";
-    //                 elseif ($key == 'age')
-    //                     echo $value . ' ans';
-    //                 else echo $value . ' ';
-    //             echo '<br>';
-    //         }
-    // }
-
-
-
-
-
-
-    // function searchStudent ($pPetitTableau)
-    // {        
-    //         foreach ($pPetitTableau => $value)
-    //             if ($key == 'photo')
-    //                 echo "<img src='$value' style='width:68px;height:auto'>";
-    //             elseif ($key == 'age')
-    //                 echo $value . ' ans';    
-    //             else echo $value . ' ';
-    //         echo '<br>';
-
-    // }
-
-
-    // function showStudent ($pGrosTableau)
-    // {
-    //     foreach($pGrosTableau as $student)
-    //     {
-    //         foreach($student as $key => $value)
-    //         {
-    //             echo $value . " ";
-    //         }
-    //         echo "ans \n" ;
-    //         echo "<br><br>";
-    //     }
-    // }
-    //showStudent($trombi);
-    ?>
+<!-- appelle script bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
 
 </body>
+
 
 </html>
